@@ -1,0 +1,25 @@
+---
+title: "Plots with ggplot2 are better plots!"
+author: "Mireia Ramos (@mirthelle)"
+date: "R-Ladies Barcelona, 27th of September 2017"
+output: 
+  revealjs::revealjs_presentation:
+    css: rladies_revealjs.css
+    highlight: pygments
+    transition: slide
+---
+
+# Introduction
+## What is R-Ladies?
+
+## Who am I?
+
+## Why ggplot2?
+
+# Basics of ggplot2
+
+## Basic elements
+
+- Mappings.
+- Aesthetics.
+- Geoms.
