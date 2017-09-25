@@ -2,12 +2,14 @@
   background: #FFFFFF;
   color: #181818;
   font-size: 42px;
+  text-align: left;
 }
 .reveal {
   font-family: "Helvetica Neue",Helvetica,Arial,Verdana,Geneva,sans-serif;
   font-size: 36px;
   font-weight: normal;
   letter-spacing: -0.02em;
+  text-align: left;
   color: #000;
   background: url('images/R-LadiesGlobal_RBG_online_LogoOnly.png') top 20px right 20px no-repeat;
   background-size: 80px 80px; }
@@ -52,6 +54,8 @@
 .reveal pre code {
   background: #D3D3D3;
   color: #181818;
+  font-size: 20px;
+  font-size: 1em;
 }
 
 
@@ -91,3 +95,7 @@ line-height: 45px;}
 
 .reveal .progress span {
   background: #88398A;}
+  
+.reveal p {
+  text-align: left;
+}

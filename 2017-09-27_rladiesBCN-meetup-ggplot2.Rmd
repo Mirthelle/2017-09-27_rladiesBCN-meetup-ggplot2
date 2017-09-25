@@ -9,17 +9,122 @@ output:
     transition: slide
 ---
 
-# Introduction
+# About R-Ladies
 ## What is R-Ladies?
+Worldwide organization that promotes **gender diversity** in the R community via meetups and mentorship in a **friendly and safe environment**.
 
+```{r, echo=FALSE, fig.align="center"}
+knitr::include_graphics("images/R-LadiesGlobal_RBG_online_LogoWithText.png", dpi=300)
+```
+
+## R-Ladies Barcelona
+- Created in November 2016 by **Maëlle Salmon** and **Rebeca **.
+- **Season 2016-2017**: 8 Meetups and more than 250 R-Ladies!
+
+## R-Ladies Barcelona v.2
+- Change of organizers summer 2017: **Ania Alay** and **Mireia Ramos**
+
+More to come in this season **2017-2018**!
+
+```{r, echo=FALSE, fig.align="center"}
+knitr::include_graphics("https://media.giphy.com/media/nsMPhWK6bfxHq/giphy.gif")
+```
+
+# Introduction
 ## Who am I?
+- PhD student in Biomedicine and Bioinformatics. I analyze **genomic and epigenomic data using R** to increase knowledge in the pathological bases of Type 1 Diabetes.
+- `#rcatladies`
 
 ## Why ggplot2?
+`ggplot2` is a data visualization package for R developed by [Hadley Wickham](https://twitter.com/hadleywickham) that provides a structured approach to graphing.
+
+**Pros**:
+
+- Standarized method for plotting.
+- Easy to create publication quality plot.
+- Allows creation of relatively complex plots with ease.
+- Most dominant statistics plotting package in R.
+
+```{r, echo=FALSE, fig.align="center", out.width=200}
+knitr::include_graphics("https://media.giphy.com/media/QDRJ6IJzFSR1K/giphy.gif")
+```
+
+
+## Why ggplot2?
+**Cons**:
+
+- Might be a little bit difficult to understand at the begining. 
+- Some times you might get lost between all the things you can change.
+
+```{r, echo=FALSE, fig.align="center"}
+knitr::include_graphics("https://media.giphy.com/media/2FazgxLhFpYv4t93G/giphy.gif")
+```
+
+
+## Why ggplot2?
+
+But in the end it's worth it!
+
+```{r, echo=FALSE, fig.align="center"}
+knitr::include_graphics("https://media.giphy.com/media/POKjtSbQ1z4Mo/giphy.gif")
+```
+
 
 # Basics of ggplot2
 
 ## Basic elements
+We find 3 basic elements in a `ggplot2` plot:
 
-- Mappings.
-- Aesthetics.
-- Geoms.
+- **Data**. The data you want to show in the plot.
+- **Mapping**. Maps a variable to an element in the plot (x and y axes, color, size, shape, etc.)
+- **Geoms**. Sets the type of graphic and elements that you want to plot. 
+
+## Steps for plotting
+
+1. Convert your `data.frame` to long format (not always needed!).
+2. Use `ggplot()` with your data and map your x and y values.
+3. Add geoms that you want to show and map other aesthetical parameters.
+
+```{r, echo=FALSE, fig.align="center"}
+knitr::include_graphics("https://media.giphy.com/media/iqRgU7mFDGeUU/giphy.gif")
+```
+
+
+## Steps for plotting
+### 1. Convert your `data.frame` to long format
+
+```{r, echo=FALSE}
+dat.wide <- data.frame("Drug"=c("A", "B", "C"),
+                       "Response.CTRL"=c(3, 6, 8),
+                       "Response.T1D"=c(12,56,2)
+                       )
+
+dat.long <- data.frame("Drug"=c("A", "B", "C", "A", "B", "C"),
+                       "Patient"=c(rep("CTRL", 3), rep("T1D", 3)),
+                       "Response"=c(3,6,8,23,56,2))
+knitr::kable(list(dat.wide, dat.long), 
+             format="html", caption="Examples of tables in wide format (left) and long format (right)")
+```
+
+`reshape2::melt()` useful for converting from wide to long formats. 
+
+## Steps for plotting
+### 2. Map X and Y values {.small-code}
+
+```{r, fig.align="center", fig.width=5, fig.height=4}
+library(ggplot2)
+
+ggplot(dat.long, aes(x=Drug, y=Response))
+```
+
+
+## Steps for plotting
+### 3. Add geoms and other aesthetics
+
+
+```{r, fig.align="center", fig.width=5, fig.height=4}
+library(ggplot2)
+
+ggplot(dat.long, aes(x=Drug, y=Response)) +
+  geom_point(aes(color=Patient), size=3)
+```
