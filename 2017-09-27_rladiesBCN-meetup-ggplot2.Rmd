@@ -61,7 +61,7 @@ knitr::include_graphics("images/slack.png")
 - I have two cats whom I love. `#rcatladies`
 - I enjoy watching lots of TV series and playing videogames.
 
-```{r, echo=FALSE}
+```{r, echo=FALSE, out.height=300, out.width=300}
 knitr::include_graphics("images/mycats.png")
 ```
 
@@ -283,3 +283,5 @@ knitr::include_graphics("images/cowplot.png")
 ```
 
 # Time for some exercises!
+
+
