@@ -301,3 +301,8 @@ knitr::include_graphics("images/cowplot.png")
     - If you are interested please contact us!
     
 ## Thank you for coming!
+```{r, echo=FALSE}
+knitr::include_graphics("https://media.giphy.com/media/iPiUxztIL4Sl2/giphy.gif")
+```
+
+
