@@ -55,7 +55,7 @@
   background: #D3D3D3;
   color: #181818;
   font-size: 20px;
-  font-size: 1em;
+  max-height: 800px;
 }
 
 
@@ -69,11 +69,6 @@
   background: transparent;
   box-shadow: 0 0 0;
 }
-
-.reveal pre code {
-font-size: 36px;
-max-height: 800px;
-line-height: 45px;}
 
 .reveal a {
     color: #88398A;
