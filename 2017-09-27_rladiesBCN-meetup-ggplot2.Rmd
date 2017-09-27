@@ -71,7 +71,7 @@ knitr::include_graphics("images/mycats.png")
 
 **Pros**:
 
-- Standarized method for plotting.
+- Standardized method for plotting.
 - Easy to create publication quality plot.
 - Allows creation of relatively complex plots with ease.
 - Most dominant statistics plotting package in R.
@@ -84,7 +84,7 @@ knitr::include_graphics("https://media.giphy.com/media/QDRJ6IJzFSR1K/giphy.gif")
 ## Why ggplot2?
 **Cons**:
 
-- Might be a little bit difficult to understand at the begining. 
+- Might be a little bit difficult to understand at the beginning. 
 - Some times you might get lost between all the things you can change.
 
 ```{r, echo=FALSE, fig.align="center"}
@@ -189,7 +189,7 @@ knitr::include_graphics("https://media.giphy.com/media/W8krmZSDxPIfm/giphy.gif")
 ## Geometries
 Geometries (or `geom`s) allow you to select which kind of element you want to plot (lines, points, boxplots, bars, etc.).
 
-You can include parameters to tweak the appereance:  
+You can include parameters to tweak the appearance:  
 
 - Inside `aes()` parameters such as `size`, `color` or `shape` will be used to represent variables.
 - Outside `aes()` the same parameters will be static for your `geom`.
@@ -284,4 +284,20 @@ knitr::include_graphics("images/cowplot.png")
 
 # Time for some exercises!
 
+# Final Remarks
 
+## Final Remarks
+
+- Hope this small tutorial/workshop was useful for you!
+
+- We are open to ideas for October Meetup --> If there are no suggestions we will probably will talk about **why and how to create R packages**.
+
+- If you have **ideas for the upcoming meetups or you want to host one**, contact us!
+
+## Final Remarks
+- We want in including **Lighning Talks** at the beginning of each Meetup:
+    - 5 minutes presentation where someone explains their work and how they do it with R.
+    - Very basic and simple and will allow us to see different areas where R is used.
+    - If you are interested please contact us!
+    
+## Thank you for coming!

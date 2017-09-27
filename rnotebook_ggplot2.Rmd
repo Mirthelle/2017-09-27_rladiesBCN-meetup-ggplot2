@@ -8,8 +8,8 @@ output: html_notebook
 install.packages("reshape2", "cowplot", "ggrepel")
 ```
 
-
-# Data
+# Example dataset: Temperature in Barcelona (1780-2017)
+## Data
 We are going to use a dataset from [Servei Meteorològic de Catalunya](http://www.meteo.cat/wpweb/climatologia/serveis-i-dades-climatiques/serie-climatica-historica-de-barcelona/) describing the mean temperature per month from 1780 to 2017.^[Prohom M, Barriendos, Aguilar E, Ripoll R (2012): Recuperación y análisis de la serie de temperatura diaria de Barcelona, 1780-2011. Cambio Climático. Extremos e Impactos, Asociación Española de Climatología, Serie A, Vol. 8, 207–217]. 
 
 The file that we downloaded has 13 columns: the first one represents the year and the 2nd to the 13th the month. As you can observe, this is a data.frame in wide format, so we will have to convert it to long format. Temperature values are in ºC.
@@ -52,7 +52,7 @@ head(meteo.long)
 
 ```
 
-# Average temperature per month
+## Average temperature per month
 
 ```{r boxplot}
 library(cowplot)
@@ -93,7 +93,7 @@ ggplot(meteo.long, aes(month, temperature)) +
   geom_violin(aes(color=season), lwd=1) +
   theme(legend.position = "top",
         axis.text.x = element_text(angle=30, vjust=1, hjust=1)) +
-  scale_color_manual(values=c(scale_season) +
+  scale_color_manual(values=c(scale_season)) +
   ggtitle("Average Temperature in Barcelona") +
         xlab("Month") +
         ylab("Temperature (ºC)")
@@ -103,7 +103,7 @@ ggplot(meteo.long, aes(month, temperature)) +
   geom_violin(aes(fill=season), lwd=1, alpha=0.7) +
   theme(legend.position = "top",
         axis.text.x = element_text(angle=30, vjust=1, hjust=1)) +
-  scale_fill_manual(values=scale_season),
+  scale_fill_manual(values=scale_season,
                     name="Season") +
   ggtitle("Average Temperature in Barcelona") +
         xlab("Month") +
@@ -111,7 +111,7 @@ ggplot(meteo.long, aes(month, temperature)) +
 
 ```
 
-# Correlation between temperatures
+## Correlation between temperatures
 ```{r}
 ## Select year 1780 and 2016
 meteo.extreme <- meteo.long[meteo.long$year==1780 |
@@ -160,7 +160,7 @@ cor
 
 If you want the points to be on top of the lines, just change the order of the geoms!
 
-# Distribution of temperatures
+## Distribution of temperatures
 ```{r histogram}
 ggplot(meteo.long, aes(temperature)) +
   geom_histogram() +
@@ -178,4 +178,41 @@ ggplot(meteo.long, aes(temperature)) +
   scale_fill_manual(values=scale_season)
 
 ```
+
+# Your turn! ChickWeight dataset
+## Data
+Load the dataset using `data("ChickWeight")` and explore the data with `View(ChickWeight)`. The description of the column values can be found typing `?ChickWeight`
+
+## Exercise: Distributions
+### Plot a histogram of weight distributions, faceting according to the Diet.
+```{r}
+
+```
+
+### Use geom_density to plot the density of weights coloring by Diet, and faceting by Time.
+```{r}
+
+```
+
+
+## Exercise: Boxplots
+### Plot a boxplot of ChickWeight were x is Time and y is Weight.
+```{r}
+
+```
+
+### Using the last boxplot, color groups according to the Diet.
+```{r}
+
+```
+
+## Exercise: Correlations
+### Compare with a scatterplot the weigth of the chickens the first day (Time=0) and the last day (Time=21). Color the points according to the Diet
+
+```{r}
+
+```
+
+
+# Your turn! If you have things you want me to explain or to try you can ask!
 
