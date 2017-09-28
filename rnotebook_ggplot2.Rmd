@@ -42,9 +42,6 @@ seasons <- data.frame("month"=unique(meteo.long$month),
                       )
 meteo.long <- merge(meteo.long, seasons)
 
-## Add date column
-meteo.long$date <- paste(meteo.long$month, meteo.long$year)
-
 ## Remove NAs (corresponding to Sept-Dec 2017)
 meteo.long <- meteo.long[!is.na(meteo.long$temperature),]
 
@@ -63,8 +60,8 @@ ave <- ggplot(meteo.long, aes(month, temperature)) +
 ave
 
 # Add some more parameters to make it look nicer
-ave <- ggplot(meteo.long, aes(month, temperature)) +
-        geom_boxplot(aes(color=season), lwd=1) +
+ave <- ggplot(meteo.long, aes(month, temperature, color=season)) +
+        geom_boxplot(lwd=1) +
         theme(legend.position = "top",
               axis.text.x = element_text(angle=30, vjust=1, hjust=1))
 ave
@@ -186,31 +183,47 @@ Load the dataset using `data("ChickWeight")` and explore the data with `View(Chi
 ## Exercise: Distributions
 ### Plot a histogram of weight distributions, faceting according to the Diet.
 ```{r}
+ggplot(ChickWeight, aes(weight)) + 
+  geom_histogram() +
+  facet_wrap(~Diet, scales="free_y")
 
 ```
 
 ### Use geom_density to plot the density of weights coloring by Diet, and faceting by Time.
 ```{r}
-
+ggplot(ChickWeight, aes(weight)) +
+  geom_density(aes(color=Diet)) +
+  facet_wrap(~Time, scales="free")
 ```
+
+
 
 
 ## Exercise: Boxplots
 ### Plot a boxplot of ChickWeight were x is Time and y is Weight.
 ```{r}
-
+ggplot(ChickWeight, aes(factor(Time), weight)) + # We use factor() because x variable for boxplots cannot be numeric/continuous!
+       geom_boxplot()
 ```
 
 ### Using the last boxplot, color groups according to the Diet.
 ```{r}
-
+ggplot(ChickWeight, aes(factor(Time), weight)) + 
+       geom_boxplot(aes(color=Diet))
 ```
 
 ## Exercise: Correlations
 ### Compare with a scatterplot the weigth of the chickens the first day (Time=0) and the last day (Time=21). Color the points according to the Diet
 
 ```{r}
+chick <- ChickWeight[ChickWeight$Time==0 |
+                       ChickWeight$Time==21, ]
+chick.wide <- reshape2::dcast(chick, 
+                              Chick + Diet ~ Time,
+                              value.var = "weight")
 
+ggplot(chick.wide, aes(`0`, `21`)) + # If names of the columns are numbers you can use `` to call them as objects.
+  geom_point(aes(color=Diet))
 ```
 
 
